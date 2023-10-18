@@ -8,8 +8,16 @@
 </head>
 
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbz72f5xaQQu050XzMdEBBji7lMIufasmftIDWu0LTu3MXZVso5QU2XbBLbbFf6yqedG/exec"
-        style="width:100%; height:100vh; border:none;"></iframe>
+    <script>
+        fetch('https://script.google.com/macros/s/AKfycbz72f5xaQQu050XzMdEBBji7lMIufasmftIDWu0LTu3MXZVso5QU2XbBLbbFf6yqedG/exec')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const htmlDocument = parser.parseFromString(data, 'text/html');
+                document.body.appendChild(htmlDocument.body);
+            })
+            .catch(error => console.error('Erro ao carregar o script:', error));
+    </script>
 </body>
 
 </html>
