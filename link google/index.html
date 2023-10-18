@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitor de QR Code</title>
+</head>
+
+<body>
+    <script>
+        fetch('https://script.google.com/macros/s/AKfycbz72f5xaQQu050XzMdEBBji7lMIufasmftIDWu0LTu3MXZVso5QU2XbBLbbFf6yqedG/exec')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const htmlDocument = parser.parseFromString(data, 'text/html');
+                document.body.appendChild(htmlDocument.body);
+            })
+            .catch(error => console.error('Erro ao carregar o script:', error));
+    </script>
+</body>
+
+</html>
